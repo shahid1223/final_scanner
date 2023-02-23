@@ -26,12 +26,11 @@
             const html5QrCode = new Html5Qrcode("reader");
             const qrCodeSuccessCallback = (decodedText, decodedResult) => {
                 /* handle success */
-                /*console.log("decodedText = ",decodedText);
+                console.log("decodedText = ",decodedText);
                 console.log("decodedResult = ",decodedResult);
                 if(Object.keys(decodedResult).length > 0){
                     reader.style.display = "none";
-                }*/
-                alert(decodedText)
+                }
             };
             const config = { fps: 10, qrbox: { width: 200, height: 200 } };
             html5QrCode.start({facingMode: { exact: "environment"} }, config, qrCodeSuccessCallback);
