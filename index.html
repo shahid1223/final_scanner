@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <link rel="stylesheet" href="scanner.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="searchBox">
+        <input id="searchBoxInpu" type="text" />
+        <button id="scan" class="searchBoxBtn" onclick="scanBarCode()">Scan</button>
+        <button class="searchBoxBtn">Search</button>
+    </div>
+    <div id="reader" class="scannerStyle"></div>
+    <!-- <div id="reader" ></div> -->
+    <script>
+        function scanBarCode() {
+            const reader = document.getElementById('reader');
+            reader.style.display = "block";
+
+            const html5QrCode = new Html5Qrcode("reader");
+            const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+                /* handle success */
+                console.log("decodedText = ",decodedText);
+                console.log("decodedResult = ",decodedResult);
+                if(Object.keys(decodedResult).length > 0){
+                    reader.style.display = "none";
+                }
+            };
+            const config = { fps: 10, qrbox: { width: 200, height: 200 } };
+            html5QrCode.start({facingMode: { exact: "environment"} }, config, qrCodeSuccessCallback);
+
+            // This method will trigger user permissions
+            html5QrCode.getCameras().then(devices => {
+                /**
+                 * devices would be an array of objects of type:
+                 * { id: "id", label: "label" }
+                 */
+                console.log("Device ", devices);
+                if (devices && devices.length) {
+                    var cameraId = devices[0].id;
+                    // .. use this to start scanning.
+                }
+            }).catch(err => {
+                // handle err
+                console.log(err," err")
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
