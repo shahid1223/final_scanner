@@ -33,7 +33,7 @@
                 }*/
                 alert(decodedText);
             };
-            const config = { fps: 10 };
+            const config = { fps: 10, qrbox: { width: 100, height: 200 } };
             html5QrCode.start({facingMode: { exact: "environment"} }, config, qrCodeSuccessCallback);
         }
 
