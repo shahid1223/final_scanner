@@ -19,29 +19,28 @@
         <div id="reader" class="scannerStyle"></div>
         <h1 id="result"></h1>
     </div>
-    <!-- <div id="reader" ></div> -->
     <script>
+
+        const reader = document.getElementById('reader');
+
         function scanBarCode() {
-            const reader = document.getElementById('reader');
             reader.style.display = "block";
+            if (reader !== null) {
+                const html5QrCode = new Html5Qrcode("reader");
+                const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+                    html5QrCode.stop()
+                    const container = document.getElementById('result');
+                    const searchBox = document.getElementById('searchBox');
+                    searchBox.style.display = "none";
+                    container.innerHTML = `${decodedText}`
 
-            const html5QrCode = new Html5Qrcode("reader");
-            const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-                /* handle success */
-                // console.log("decodedText = ", decodedText);
-                // console.log("decodedResult = ", decodedResult);
-                // console.log('shahid')
-                // reader.style.display = "none";
-                const container = document.getElementById('result');
-                console.log(container)
-                container.innerHTML = `${decodedText}`
-
-            };
-            const config = { fps: 100, qrbox: { width: 200, height: 200 } };
-            html5QrCode.start({ facingMode: { exact: "environment" } }, config, qrCodeSuccessCallback);
-
-
+                };
+                const config = { fps: 100, qrbox: { width: 200, height: 200 } };
+                html5QrCode.start({ facingMode: { exact: "environment" } }, config, qrCodeSuccessCallback);
+            }
         }
+
+
 
 
     </script>
