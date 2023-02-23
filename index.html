@@ -11,12 +11,13 @@
 </head>
 
 <body>
-    <div id="searchBox">
-        <input id="searchBoxInpu" type="text" />
-        <button id="scan" class="searchBoxBtn" onclick="scanBarCode()">Scan</button>
-        <button class="searchBoxBtn">Search</button>
+    <div class="container">
+        <div id="searchBox">
+            <input id="searchBoxInpu" type="text" />
+            <button id="scan" class="searchBoxBtn" onclick="scanBarCode()">Scan</button>
+        </div>
+        <div id="reader" class="scannerStyle"></div>
     </div>
-    <div id="reader" class="scannerStyle"></div>
     <!-- <div id="reader" ></div> -->
     <script>
         function scanBarCode() {
@@ -26,16 +27,16 @@
             const html5QrCode = new Html5Qrcode("reader");
             const qrCodeSuccessCallback = (decodedText, decodedResult) => {
                 /* handle success */
-                console.log("decodedText = ",decodedText);
-                console.log("decodedResult = ",decodedResult);
-                if(Object.keys(decodedResult).length > 0){
+                console.log("decodedText = ", decodedText);
+                console.log("decodedResult = ", decodedResult);
+                if (Object.keys(decodedResult).length > 0) {
                     reader.style.display = "none";
                 }
             };
-            const config = { fps: 10, qrbox: { width: 200, height: 200 } };
-            html5QrCode.start({facingMode: { exact: "environment"} }, config, qrCodeSuccessCallback);
+            const config = { fps: 10, qrbox: { innerHeight: 50, innerWidth: 50, outerHeight: 100, outerWidth: 100 } };
+            html5QrCode.start({ facingMode: { exact: "environment" } }, config, qrCodeSuccessCallback);
 
-            
+
         }
 
 
