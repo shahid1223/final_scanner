@@ -32,10 +32,10 @@
                 if (Object.keys(decodedResult).length > 0) {
                     reader.style.display = "none";
                 }
-                alert(decodedText)
+                alert(decodedTextcls)
             };
             const config = { fps: 10, qrbox: { width: 200, height: 200 } };
-            html5QrCode.start({ facingMode: { exact: "user" } }, config, qrCodeSuccessCallback);
+            html5QrCode.start({ facingMode: { exact: "environment" } }, config, qrCodeSuccessCallback);
 
 
         }
