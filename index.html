@@ -24,14 +24,14 @@
         const reader = document.getElementById('reader');
 
         function scanBarCode() {
+            const searchBox = document.getElementById('searchBox');
+            searchBox.style.display = "none";
             reader.style.display = "block";
             if (reader !== null) {
                 const html5QrCode = new Html5Qrcode("reader");
                 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
                     html5QrCode.stop()
                     const container = document.getElementById('result');
-                    const searchBox = document.getElementById('searchBox');
-                    searchBox.style.display = "none";
                     container.innerHTML = `${decodedText}`
 
                 };
