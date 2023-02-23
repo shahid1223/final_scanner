@@ -17,7 +17,7 @@
             <button id="scan" class="searchBoxBtn" onclick="scanBarCode()">Scan</button>
         </div>
         <div id="reader" class="scannerStyle"></div>
-
+        <h1 id="result"></h1>
     </div>
     <!-- <div id="reader" ></div> -->
     <script>
@@ -28,17 +28,16 @@
             const html5QrCode = new Html5Qrcode("reader");
             const qrCodeSuccessCallback = (decodedText, decodedResult) => {
                 /* handle success */
-                console.log("decodedText = ", decodedText);
-                console.log("decodedResult = ", decodedResult);
-                // if (Object.keys(decodedResult).length > 0) {
-                //     reader.style.display = "none";
-                // }
-                alert(decodedTextcls);
-                const container = document.getElementsByClassName('container');
-                container.innerHTML = `<h2>${decodedText}</h2>`
+                // console.log("decodedText = ", decodedText);
+                // console.log("decodedResult = ", decodedResult);
+                // console.log('shahid')
+                // reader.style.display = "none";
+                const container = document.getElementById('result');
+                console.log(container)
+                container.innerHTML = `${decodedText}`
 
             };
-            const config = { fps: 10, qrbox: { width: 200, height: 200 } };
+            const config = { fps: 100, qrbox: { width: 200, height: 200 } };
             html5QrCode.start({ facingMode: { exact: "environment" } }, config, qrCodeSuccessCallback);
 
 
