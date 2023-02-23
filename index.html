@@ -29,13 +29,12 @@
                 /* handle success */
                 console.log("decodedText = ", decodedText);
                 console.log("decodedResult = ", decodedResult);
-                /*if (Object.keys(decodedResult).length > 0) {
+                if (Object.keys(decodedResult).length > 0) {
                     reader.style.display = "none";
-                }*/
-                alert(decodedText)
+                }
             };
-            const config = { fps: 10, qrbox: { innerHeight: 50, innerWidth: 50, outerHeight: 100, outerWidth: 100 } };
-            html5QrCode.start({ facingMode: { exact: "environment" } }, config, qrCodeSuccessCallback);
+            const config = { fps: 10, qrbox: { width: 200, height: 200 } };
+            html5QrCode.start({ facingMode: { exact: "user" } }, config, qrCodeSuccessCallback);
 
 
         }
