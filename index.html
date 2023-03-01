@@ -66,12 +66,13 @@
             const searchBox = document.getElementById('searchBox');
             searchBox.style.display = "none";
             reader.style.display = "block";
+
+            closeModal.style.display = "block";
+            closeModal.setAttribute("aria-madal", "true");
+            closeModal.setAttribute("role", "dialog");
+            closeModal.classList.add("show")
             if (reader !== null) {
 
-                closeModal.style.display = "block";
-                closeModal.setAttribute("aria-madal", "true");
-                closeModal.setAttribute("role", "dialog");
-                closeModal.classList.add("show")
                 const html5QrCode = new Html5Qrcode("reader");
                 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
                     html5QrCode.stop()
