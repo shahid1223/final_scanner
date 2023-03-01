@@ -15,7 +15,8 @@
 <body>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" id="scan" class="searchBoxBtn" onclick="scanBarCode()">
+    <button type="button" class="btn btn-primary" id="scan" class="searchBoxBtn" onclick="scanBarCode()"
+        data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Launch static backdrop modal
     </button>
 
@@ -52,10 +53,6 @@
         const reader = document.getElementById('reader');
 
         function scanBarCode() {
-
-            const modal = document.getElementById('staticBackdrop');
-            modal.classList.add("show");
-            modal.style.display = "block";
             const searchBox = document.getElementById('searchBox');
             searchBox.style.display = "none";
             reader.style.display = "block";
@@ -68,7 +65,7 @@
 
                 };
                 const config = { fps: 100, qrbox: { width: 300, height: 300 } };
-                html5QrCode.start({ facingMode: { exact: "user" } }, config, qrCodeSuccessCallback);
+                html5QrCode.start({ facingMode: { exact: "environment" } }, config, qrCodeSuccessCallback);
             }
         }
 
