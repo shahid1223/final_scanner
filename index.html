@@ -15,8 +15,7 @@
 <body>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" id="scan" class="searchBoxBtn" onclick="scanBarCode()"
-        data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <button type="button" class="btn btn-primary" id="scan" class="searchBoxBtn" onclick="scanBarCode()">
         Launch static backdrop modal
     </button>
 
@@ -39,7 +38,7 @@
                     <!-- </div> -->
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModalfun()">Close</button>
                     <!-- <button type="button" class="btn btn-primary">Understood</button> -->
                 </div>
             </div>
@@ -50,9 +49,24 @@
         crossorigin="anonymous"></script>
     <script>
 
+        // style="display: block;" aria-modal="true" role="dialog"
+        const closeModal = document.getElementById('staticBackdrop');
+        function closeModalfun() {
+            closeModal.style.display = "none";
+            closeModal.removeAttribute("aria-madal");
+            // closeModal.remove("role");
+            closeModal.classList.add("show")
+            closeModal.setAttribute("aria-hidden", "true")
+        }
+
         const reader = document.getElementById('reader');
 
         function scanBarCode() {
+            closeModal.style.display = "block";
+            closeModal.setAttribute("aria-madal", "true");
+            closeModal.setAttribute("role", "dialog");
+            closeModal.classList.add("show")
+            // closeModal.removeAttribute("aria-hidden")
             const searchBox = document.getElementById('searchBox');
             searchBox.style.display = "none";
             reader.style.display = "block";
