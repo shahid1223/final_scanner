@@ -26,7 +26,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Scanner</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" onclick="closeModalfun()"></button>
                 </div>
                 <div class="modal-body">
                     <!-- <div class="container"> -->
@@ -62,14 +62,14 @@
         const reader = document.getElementById('reader');
 
         function scanBarCode() {
-            closeModal.style.display = "block";
-            closeModal.setAttribute("aria-madal", "true");
-            closeModal.setAttribute("role", "dialog");
-            closeModal.classList.add("show")
             // closeModal.removeAttribute("aria-hidden")
             const searchBox = document.getElementById('searchBox');
             searchBox.style.display = "none";
             reader.style.display = "block";
+            closeModal.style.display = "block";
+            closeModal.setAttribute("aria-madal", "true");
+            closeModal.setAttribute("role", "dialog");
+            closeModal.classList.add("show")
             if (reader !== null) {
                 const html5QrCode = new Html5Qrcode("reader");
                 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
