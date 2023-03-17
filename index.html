@@ -19,6 +19,7 @@
   </head>
   <body>
     <button id="scan" onClick="scanBarCode()">Open</button>
+    <input type="text" id="setbarcodeValue"/>
 
     <script>
       function scan() {
@@ -94,6 +95,8 @@
               const qrCodeSuccessCallback = (decodedText, decodedResult) => {
                 //html5QrCode.stop();
                 alert(decodedText);
+                const setbarcodeValue = document.getElementById("setbarcodeValue");
+                setbarcodeValue.value  = decodedText;
                 /*$.ajax({
                   method: "POST",
                   url: "<?php echo base_url('scanner_url') ?>",
